@@ -1,0 +1,8 @@
+d:\我的文档\visual studio 2015\Projects\温湿度采集\温湿度采集\bin\Debug\温湿度采集.exe.config
+d:\我的文档\visual studio 2015\Projects\温湿度采集\温湿度采集\bin\Debug\温湿度采集.exe
+d:\我的文档\visual studio 2015\Projects\温湿度采集\温湿度采集\bin\Debug\温湿度采集.pdb
+d:\我的文档\visual studio 2015\Projects\温湿度采集\温湿度采集\obj\Debug\温湿度采集.Properties.Resources.resources
+d:\我的文档\visual studio 2015\Projects\温湿度采集\温湿度采集\obj\Debug\温湿度采集.csproj.GenerateResource.Cache
+d:\我的文档\visual studio 2015\Projects\温湿度采集\温湿度采集\obj\Debug\温湿度采集.exe
+d:\我的文档\visual studio 2015\Projects\温湿度采集\温湿度采集\obj\Debug\温湿度采集.pdb
+d:\我的文档\visual studio 2015\Projects\温湿度采集\温湿度采集\obj\Debug\温湿度采集.Form1.resources
