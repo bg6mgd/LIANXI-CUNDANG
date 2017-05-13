@@ -6,3 +6,12 @@ d:\我的文档\visual studio 2015\Projects\温湿度采集\温湿度采集\obj\
 d:\我的文档\visual studio 2015\Projects\温湿度采集\温湿度采集\obj\Debug\温湿度采集.exe
 d:\我的文档\visual studio 2015\Projects\温湿度采集\温湿度采集\obj\Debug\温湿度采集.pdb
 d:\我的文档\visual studio 2015\Projects\温湿度采集\温湿度采集\obj\Debug\温湿度采集.Form1.resources
+G:\github\LIANXI-CUNDANG\温湿度采集\温湿度采集\bin\Debug\温湿度采集.exe.config
+G:\github\LIANXI-CUNDANG\温湿度采集\温湿度采集\obj\Debug\温湿度采集.exe
+G:\github\LIANXI-CUNDANG\温湿度采集\温湿度采集\obj\Debug\温湿度采集.pdb
+G:\github\LIANXI-CUNDANG\温湿度采集\温湿度采集\bin\Debug\温湿度采集.exe
+G:\github\LIANXI-CUNDANG\温湿度采集\温湿度采集\bin\Debug\温湿度采集.pdb
+G:\github\LIANXI-CUNDANG\温湿度采集\温湿度采集\obj\Debug\温湿度采集.csprojResolveAssemblyReference.cache
+G:\github\LIANXI-CUNDANG\温湿度采集\温湿度采集\obj\Debug\温湿度采集.Form1.resources
+G:\github\LIANXI-CUNDANG\温湿度采集\温湿度采集\obj\Debug\温湿度采集.Properties.Resources.resources
+G:\github\LIANXI-CUNDANG\温湿度采集\温湿度采集\obj\Debug\温湿度采集.csproj.GenerateResource.Cache
