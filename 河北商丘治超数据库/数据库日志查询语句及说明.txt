@@ -1,0 +1,57 @@
+[LogMainTable]数据库表是日志记录主表，记录着当前这次过车数据的总重，车速，修正参数，修正后重量，轴数以及各个轴的时刻差
+[LogDetailTable]数据库表是日志记录明细表，记录着主表当中LogID对应的称板编号，计量值，时刻以及计算后的该板重
+
+
+[LogMainTable]字段说明：
+LogID主键，同时是LogDetailTable明细表的外键，该条数据对于LogDetailTable明细表的多条数据
+ZZ 总重
+CS 车速
+XZPara 修正参数
+XZZZ	修正后重量
+ZS 轴数
+AxisSKC1----AxisSKC8对应1--8轴的时刻差
+
+
+[LogDetailTable]字段说明
+ID 自增字段，主键，不用管
+LogID 对应LogMainTable主表
+CBBo	称板编号
+JLZ	计量值
+SK	时刻（四方仪表），最高点sample值（华驰仪表）
+CBZZ	称板重
+UsedSKC 四方仪表该字段无效（四方仪表），最高点index值（华驰仪表）
+
+
+LogMainTable查询语句：
+
+SELECT *
+  FROM [SQWRZS].[dbo].[LogMainTable]
+  order by LogID desc
+  
+
+
+SELECT *
+  FROM [HBZC].[dbo].[LogMainTable]
+  order by LogID desc
+  
+  查询所有日志主表数据，并按日志记录ID倒序排列
+  
+  
+  明细表查询语句：
+  
+  SELECT 
+	  [LogID]
+      ,[CBNo]
+      ,[JLZ]
+      ,[CBZZ]
+      ,[SK]
+      ,[UsedSKC]
+  FROM [SQWRZS].[dbo].[LogDetailTable] 
+  where LogID=20170511165326 and CBNo=3
+  
+  查询明细表中LogID=20170511165326且称板编号为3的数据
+  这里的LogID是主表中要查询称板数据的日志ID
+  CBNo=3是称板编号为3的，如果要查5的编号，请改为5
+  
+  
+  
