@@ -25,7 +25,16 @@ namespace 自动创建数据库
                     "SIZE = 1MB, MAXSIZE = 5MB, FILEGROWTH = 10%)", dbname);
                 using (SqlCommand cmd = new SqlCommand(str, conn))
                 {
-                    cmd.ExecuteNonQuery();
+                    try
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+                    catch (Exception e)
+                    {
+
+                        Console.Write("{0}", e);
+                    }
+                   
                 }
                 Console.WriteLine("Do you want to continue\n? [y/n]");
                 exit = Console.ReadLine();
