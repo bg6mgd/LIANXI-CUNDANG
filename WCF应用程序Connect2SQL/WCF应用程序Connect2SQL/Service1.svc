@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="WCF应用程序Connect2SQL.Service1" CodeBehind="Service1.svc.cs" %>

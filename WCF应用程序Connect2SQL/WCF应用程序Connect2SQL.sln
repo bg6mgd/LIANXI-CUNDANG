@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCF应用程序Connect2SQL", "WCF应用程序Connect2SQL\WCF应用程序Connect2SQL.csproj", "{89C5C3CE-E618-4798-AE5D-B6851AF9C391}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "showdata", "showdata\showdata.csproj", "{5066D933-5D2E-4118-9EDF-92791490E96D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{89C5C3CE-E618-4798-AE5D-B6851AF9C391}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89C5C3CE-E618-4798-AE5D-B6851AF9C391}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89C5C3CE-E618-4798-AE5D-B6851AF9C391}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89C5C3CE-E618-4798-AE5D-B6851AF9C391}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5066D933-5D2E-4118-9EDF-92791490E96D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5066D933-5D2E-4118-9EDF-92791490E96D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5066D933-5D2E-4118-9EDF-92791490E96D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5066D933-5D2E-4118-9EDF-92791490E96D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

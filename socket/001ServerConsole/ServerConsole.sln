@@ -1,0 +1,86 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerConsole", "ServerConsole\ServerConsole.csproj", "{403BCFD5-E068-49D8-89B3-CBB7EFE380B1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientConsole", "..\002ClientConsole\ClientConsole\ClientConsole.csproj", "{A0D7EAD2-C40B-44CC-AB60-F755426E33C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server", "..\003ClientSendAndServerAccept\Server\Server.csproj", "{C2A2A0F8-DB29-4E3B-8FA8-BFC2B8D99C91}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "..\003ClientSendAndServerAccept\Client\Client.csproj", "{0D1BC020-C2E9-4C2A-A5AB-BBE537224BB9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerMany", "..\004ClientSendManyAndServerAcceptMany\ServerMany\ServerMany.csproj", "{AA0F47F9-AD40-4D3D-A87A-CF4428D5000F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientMany", "..\004ClientSendManyAndServerAcceptMany\ClientMany\ClientMany.csproj", "{FAA97A9B-888E-433A-9C94-ABBB5249E8A7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerManySelf", "..\005ClientSendManySelfAndServerAcceptManySelf\ServerManySelf\ServerManySelf.csproj", "{FDFA6888-2057-40D0-9F9E-51EC64249B02}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientManySelf", "..\005ClientSendManySelfAndServerAcceptManySelf\ClientManySelf\ClientManySelf.csproj", "{F7C201EA-A20C-4075-8516-A8F02AB7BDEC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientSQL", "..\006ClientSendSQLAndServerAcceptSQL\ClientSQL\ClientSQL.csproj", "{E0969E70-0B9A-4033-A824-A859C63A1737}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerSend", "..\007ServerSendAndClientAccept\ServerSend\ServerSend.csproj", "{A0DC7541-411A-45A4-975F-EEA718811BCB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientAccept", "..\007ServerSendAndClientAccept\ClientAccept\ClientAccept.csproj", "{0593D23A-0499-4BE1-A760-CE5C5177636F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerSQL", "..\006ClientSendSQLAndServerAcceptSQL\ServerSQL\ServerSQL.csproj", "{C5C56B0F-33F2-4440-B336-93111E90C724}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{403BCFD5-E068-49D8-89B3-CBB7EFE380B1}.Debug|x86.ActiveCfg = Debug|x86
+		{403BCFD5-E068-49D8-89B3-CBB7EFE380B1}.Debug|x86.Build.0 = Debug|x86
+		{403BCFD5-E068-49D8-89B3-CBB7EFE380B1}.Release|x86.ActiveCfg = Release|x86
+		{403BCFD5-E068-49D8-89B3-CBB7EFE380B1}.Release|x86.Build.0 = Release|x86
+		{A0D7EAD2-C40B-44CC-AB60-F755426E33C7}.Debug|x86.ActiveCfg = Debug|x86
+		{A0D7EAD2-C40B-44CC-AB60-F755426E33C7}.Debug|x86.Build.0 = Debug|x86
+		{A0D7EAD2-C40B-44CC-AB60-F755426E33C7}.Release|x86.ActiveCfg = Release|x86
+		{A0D7EAD2-C40B-44CC-AB60-F755426E33C7}.Release|x86.Build.0 = Release|x86
+		{C2A2A0F8-DB29-4E3B-8FA8-BFC2B8D99C91}.Debug|x86.ActiveCfg = Debug|x86
+		{C2A2A0F8-DB29-4E3B-8FA8-BFC2B8D99C91}.Debug|x86.Build.0 = Debug|x86
+		{C2A2A0F8-DB29-4E3B-8FA8-BFC2B8D99C91}.Release|x86.ActiveCfg = Release|x86
+		{C2A2A0F8-DB29-4E3B-8FA8-BFC2B8D99C91}.Release|x86.Build.0 = Release|x86
+		{0D1BC020-C2E9-4C2A-A5AB-BBE537224BB9}.Debug|x86.ActiveCfg = Debug|x86
+		{0D1BC020-C2E9-4C2A-A5AB-BBE537224BB9}.Debug|x86.Build.0 = Debug|x86
+		{0D1BC020-C2E9-4C2A-A5AB-BBE537224BB9}.Release|x86.ActiveCfg = Release|x86
+		{0D1BC020-C2E9-4C2A-A5AB-BBE537224BB9}.Release|x86.Build.0 = Release|x86
+		{AA0F47F9-AD40-4D3D-A87A-CF4428D5000F}.Debug|x86.ActiveCfg = Debug|x86
+		{AA0F47F9-AD40-4D3D-A87A-CF4428D5000F}.Debug|x86.Build.0 = Debug|x86
+		{AA0F47F9-AD40-4D3D-A87A-CF4428D5000F}.Release|x86.ActiveCfg = Release|x86
+		{AA0F47F9-AD40-4D3D-A87A-CF4428D5000F}.Release|x86.Build.0 = Release|x86
+		{FAA97A9B-888E-433A-9C94-ABBB5249E8A7}.Debug|x86.ActiveCfg = Debug|x86
+		{FAA97A9B-888E-433A-9C94-ABBB5249E8A7}.Debug|x86.Build.0 = Debug|x86
+		{FAA97A9B-888E-433A-9C94-ABBB5249E8A7}.Release|x86.ActiveCfg = Release|x86
+		{FAA97A9B-888E-433A-9C94-ABBB5249E8A7}.Release|x86.Build.0 = Release|x86
+		{FDFA6888-2057-40D0-9F9E-51EC64249B02}.Debug|x86.ActiveCfg = Debug|x86
+		{FDFA6888-2057-40D0-9F9E-51EC64249B02}.Debug|x86.Build.0 = Debug|x86
+		{FDFA6888-2057-40D0-9F9E-51EC64249B02}.Release|x86.ActiveCfg = Release|x86
+		{FDFA6888-2057-40D0-9F9E-51EC64249B02}.Release|x86.Build.0 = Release|x86
+		{F7C201EA-A20C-4075-8516-A8F02AB7BDEC}.Debug|x86.ActiveCfg = Debug|x86
+		{F7C201EA-A20C-4075-8516-A8F02AB7BDEC}.Debug|x86.Build.0 = Debug|x86
+		{F7C201EA-A20C-4075-8516-A8F02AB7BDEC}.Release|x86.ActiveCfg = Release|x86
+		{F7C201EA-A20C-4075-8516-A8F02AB7BDEC}.Release|x86.Build.0 = Release|x86
+		{E0969E70-0B9A-4033-A824-A859C63A1737}.Debug|x86.ActiveCfg = Debug|x86
+		{E0969E70-0B9A-4033-A824-A859C63A1737}.Debug|x86.Build.0 = Debug|x86
+		{E0969E70-0B9A-4033-A824-A859C63A1737}.Release|x86.ActiveCfg = Release|x86
+		{E0969E70-0B9A-4033-A824-A859C63A1737}.Release|x86.Build.0 = Release|x86
+		{A0DC7541-411A-45A4-975F-EEA718811BCB}.Debug|x86.ActiveCfg = Debug|x86
+		{A0DC7541-411A-45A4-975F-EEA718811BCB}.Debug|x86.Build.0 = Debug|x86
+		{A0DC7541-411A-45A4-975F-EEA718811BCB}.Release|x86.ActiveCfg = Release|x86
+		{A0DC7541-411A-45A4-975F-EEA718811BCB}.Release|x86.Build.0 = Release|x86
+		{0593D23A-0499-4BE1-A760-CE5C5177636F}.Debug|x86.ActiveCfg = Debug|x86
+		{0593D23A-0499-4BE1-A760-CE5C5177636F}.Debug|x86.Build.0 = Debug|x86
+		{0593D23A-0499-4BE1-A760-CE5C5177636F}.Release|x86.ActiveCfg = Release|x86
+		{0593D23A-0499-4BE1-A760-CE5C5177636F}.Release|x86.Build.0 = Release|x86
+		{C5C56B0F-33F2-4440-B336-93111E90C724}.Debug|x86.ActiveCfg = Debug|x86
+		{C5C56B0F-33F2-4440-B336-93111E90C724}.Debug|x86.Build.0 = Debug|x86
+		{C5C56B0F-33F2-4440-B336-93111E90C724}.Release|x86.ActiveCfg = Release|x86
+		{C5C56B0F-33F2-4440-B336-93111E90C724}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

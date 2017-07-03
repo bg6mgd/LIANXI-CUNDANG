@@ -1,0 +1,7 @@
+001ServerConsole 								服务器开启端口
+002ClientConsole								客户端和服务器建立连接
+003ClientSendAndServerAccept					客户端发送字符串，服务器接收字符串
+004ClientSendManyAndServerAcceptMany			客户端发送多条字符串，服务器接收多条字符串
+005ClientSendManySelfAndServerAcceptManySelf	客户端发送多条自定义字符串，服务器接收多条自定义字符串
+006ClientSendSQLAndServerAcceptSQL				客户端从数据库获取信息发送，服务器接收信息保存到数据库
+007ServerSendAndClientAccept					服务端回传，客户端接收
