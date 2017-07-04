@@ -27,7 +27,7 @@ namespace Client
             Console.WriteLine("Server Connected! {0}-->{1}", client.Client.LocalEndPoint, client.Client.RemoteEndPoint);
 
             //定义要传送的信息
-            string msg = "\"欢迎连接到服务器！\"";
+            string msg = "welcome connect to srv";
             NetworkStream streamToServer = client.GetStream();
 
             //发送信息
