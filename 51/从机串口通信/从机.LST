@@ -1,0 +1,209 @@
+C51 COMPILER V9.00   从籣                                                                  07/07/2017 17:23:14 PAGE 1   
+
+
+C51 COMPILER V9.00, COMPILATION OF MODULE 从籣
+OBJECT MODULE PLACED IN 从机.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE 从机.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include<reg52.h> //包含头文件，一般情况不需要改动，头文件包含特殊功能寄存器的定义   
+   2          #define uchar unsigned char//宏定义无符号字符型
+   3          #define uint unsigned int  //宏定义无符号整型
+   4          /********************************************************************
+   5                                      初始定义
+   6          *********************************************************************/
+   7          
+   8          unsigned char dat; //用于存储单片机接收发送缓冲寄存器SBUF里面的内容
+   9          int i;
+  10          
+  11          
+  12          /*定义八位出为单片机P2口*/
+  13          sbit K1=P2^0;
+  14          sbit K2=P2^1;
+  15          sbit K3=P2^2;
+  16          sbit K4=P2^3;
+  17          sbit K5=P2^4;
+  18          sbit K6=P2^5;
+  19          sbit K7=P2^6;
+  20          sbit K8=P2^7;
+  21          
+  22          /*定义八位入为单片机P1口*/
+  23          sbit SB1=P1^0;
+  24          sbit SB2=P1^1;
+  25          sbit SB3=P1^2;
+  26          sbit SB4=P1^3;
+  27          sbit SB5=P1^4;
+  28          sbit SB6=P1^5;
+  29          sbit SB7=P1^6;
+  30          sbit SB8=P1^7;
+  31          
+  32          void delay(int t)
+  33          {
+  34   1         while(t--);
+  35   1      }
+  36          
+  37                               
+  38          
+  39          /*------------------------------------------------
+  40                             函数声明
+  41          ------------------------------------------------*/
+  42          void SendStr(unsigned char *s);
+  43          void SendByte(unsigned char da);
+  44          
+  45          /*------------------------------------------------
+  46                              串口初始化
+  47          ------------------------------------------------*/
+  48          void InitUART  (void)
+  49          {
+  50   1              PCON = 0x00;
+  51   1          SCON  = 0x50;                       // SCON: 模式 1, 8-bit UART, 使能接收  
+  52   1          TMOD |= 0x20;               // TMOD: timer 1, mode 2, 8-bit 重装
+  53   1          TH1   = 0xFD;               // TH1:  重装值 9600 波特率 晶振 11.0592MHz 
+  54   1              TL1 = 0xFd; 
+  55   1          TR1   = 1;                  // TR1:  timer 1 打开                         
+C51 COMPILER V9.00   从籣                                                                  07/07/2017 17:23:14 PAGE 2   
+
+  56   1          EA    = 1;                  //打开总中断
+  57   1          ES    = 1;                  //打开串口中断
+  58   1      }   
+  59          
+  60          
+  61                                
+  62          /*------------------------------------------------
+  63                              主函数
+  64          ------------------------------------------------*/
+  65          //int m;
+  66          //int flag=0;
+  67          //unsigned char ss;
+  68          int judge[8];
+  69          unsigned char ZTS[8]={0xff,0xfe,0x00,0x00,0x00,0x00,0xfd,0xfd};
+  70          int cnt=0;
+  71          int ZT;
+  72          void main (void)
+  73          {
+  74   1              ZT=P1;
+  75   1         //res=0;
+  76   1         InitUART();
+  77   1      
+  78   1         ES= 1;//打开串口中断
+  79   1         
+  80   1        while (1)                       
+  81   1          {   if(ZT!=P1)
+  82   2                  {
+  83   3                      ZTS[2]=P1;
+  84   3                      SendStr(ZTS);
+  85   3                      ZT=P1;
+  86   3                      }
+  87   2            
+  88   2             if(judge[0]==0xFF&&judge[1]==0xFE&&judge[6]==0xFD&&judge[7]==0xFC)
+  89   2                 { 
+  90   3      
+  91   3                  dat=judge[2];
+  92   3                      switch(dat)
+  93   3                      {
+  94   4      
+  95   4      
+  96   4      uchar k;
+  97   4      k=10;
+  98   4      case 0xff: P2=0X00;delay(k);dat=0xee;break; //  全开
+  99   4      case 0x00: P2=0XFF;delay(k);dat=0xee;break; //  全关
+ 100   4      
+ 101   4      case 0x01: K1=0;delay(k);dat=0xee;break;           //  第一路开
+ 102   4      case 0x02: K2=0;delay(k);dat=0xee;break;           //  第二路开
+ 103   4      case 0x03: K3=0;delay(k);dat=0xee;break;           //  第三路开
+ 104   4      case 0x04: K4=0;delay(k);dat=0xee;break;           //  第四路开
+ 105   4      case 0x05: K5=0;delay(k);dat=0xee;break;           //  第五路开
+ 106   4      case 0x06: K6=0;delay(k);dat=0xee;break;           //  第六路开
+ 107   4      case 0x07: K7=0;delay(k);dat=0xee;break;           //  第七路开
+ 108   4      case 0x08: K8=0;delay(k);dat=0xee;break;           //  第八路开
+ 109   4      
+ 110   4      case 0xFE: K1=1;delay(k);dat=0xee;break;           //  第一路关
+ 111   4      case 0xFD: K2=1;delay(k);dat=0xee;break;           //  第二路关
+ 112   4      case 0xFC: K3=1;delay(k);dat=0xee;break;           //  第三路关
+ 113   4      case 0xFB: K4=1;delay(k);dat=0xee;break;           //  第四路关
+ 114   4      case 0xFA: K5=1;delay(k);dat=0xee;break;           //  第五路关
+ 115   4      case 0xF9: K6=1;delay(k);dat=0xee;break;           //  第六路关
+ 116   4      case 0xF8: K7=1;delay(k);dat=0xee;break;           //  第七路关
+ 117   4      case 0xF7: K8=1;delay(k);dat=0xee;break;           //  第八路关
+C51 COMPILER V9.00   从籣                                                                  07/07/2017 17:23:14 PAGE 3   
+
+ 118   4      
+ 119   4      case 0x55: ZTS[2]=P1;delay(k);SendStr(ZTS);dat=0xee;break;         //  读输入口状态
+ 120   4      case 0xAA: ZTS[2]=P2;delay(k);SendStr(ZTS);dat=0xee;break;         //  读输出口状态
+ 121   4      
+ 122   4      case 0x11: P2=~P2;delay(k);dat=0xee;break;  //  输出口取反
+ 123   4      
+ 124   4      default:break;                                     //  跳出
+ 125   4                      }
+ 126   3                }
+ 127   2      
+ 128   2          }
+ 129   1      }
+ 130          
+ 131          
+ 132          
+ 133          /*------------------------------------------------
+ 134                              发送一个字节
+ 135          ------------------------------------------------*/
+ 136          void SendByte(unsigned char da)
+ 137                  {
+ 138   1              SBUF = da;
+ 139   1              while(!TI);
+ 140   1              TI = 0;
+ 141   1              }
+ 142          /*------------------------------------------------
+ 143                              发送一个字符串
+ 144          ------------------------------------------------*/
+ 145            void SendStr(unsigned char *s)
+ 146          {
+ 147   1       while(*s!='\0')// \0 表示字符串结束标志，通过检测是否字符串末尾
+ 148   1        {
+ 149   2        SendByte(*s);
+ 150   2        delay(50);
+ 151   2        s++;
+ 152   2        }
+ 153   1      }
+ 154          
+ 155          
+ 156          
+ 157          
+ 158          /*------------------------------------------------
+ 159                               串口中断程序
+ 160          ------------------------------------------------*/
+ 161          void UART_SER (void) interrupt 4 //串行中断服务程序
+ 162          {
+ 163   1          unsigned char Temp;          //定义临时变量 
+ 164   1         
+ 165   1         if(RI)                        //判断是接收中断产生
+ 166   1           {
+ 167   2                RI=0;                      //标志位清零
+ 168   2                Temp=SBUF;                 //读入缓冲区的值
+ 169   2                                   
+ 170   2                judge[cnt++]=Temp; 
+ 171   2      
+ 172   2            //报头不满足或者一个协议帧发送完毕
+ 173   2            if(cnt==8||judge[0]!=0xFF)          
+ 174   2            cnt=0;
+ 175   2            SBUF=Temp;     
+ 176   2                //TI=1;
+ 177   2               }
+ 178   1         if(TI) 
+ 179   1              TI=0;
+C51 COMPILER V9.00   从籣                                                                  07/07/2017 17:23:14 PAGE 4   
+
+ 180   1      } 
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    487    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     31       1
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,113 @@
+C51 COMPILER V9.00   _Ð¶Ï2                                                                 07/06/2017 18:05:13 PAGE 1   
+
+
+C51 COMPILER V9.00, COMPILATION OF MODULE _Ð¶Ï2
+OBJECT MODULE PLACED IN ÖÐ¶Ï2.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE ÖÐ¶Ï2.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1            #include <reg52.h>
+   2           //#include "MY51.h"
+   3            //#define uchar unsigned char;
+   4          void    initSer(); 
+   5                   //´®¿Ú³õÊ¼»¯
+   6                           char  table1[2];
+   7                           unsigned char  j = 0;
+   8          unsigned char  sendFlag = 0;     //Î´·¢ËÍÊý¾ÝÊ±
+   9          unsigned char  receFlag =0;             //Î´½ÓÊÜµ½Êý¾ÝÊ±
+  10          
+  11          //code  unsigned char  TEXT0[] = "****************************\r\n";  //\r\nÊÇ»Ø³µ»»ÐÐ
+  12          //code  unsigned char  TEXT1[] = "µ¥Æ¬»ú´®¿ÚÍ¨Ñ¶²âÊÔ\r\n";
+  13          //code  unsigned char  TEXT2[] = "http://xouou.iteye.com\r\n";
+  14          //code  unsigned char  TEXT3[] = "****************************\r\n\r\n";//»Ø³µ»»ÐÐ²¢¿Õ1ÐÐ
+  15          
+  16          void sendChar(unsigned char sendValue);  //·¢ËÍÒ»×Ö½ÚÊý¾Ý
+  17          void sendAll(unsigned char *pValue);       //·¢ËÍÒ»×éÊý¾Ý
+  18          
+  19          void main(void)
+  20          {
+  21   1              initSer();
+  22   1              while(1)
+  23   1              {
+  24   2              
+  25   2                if(receFlag)                          //µ¥Æ¬»ú´®¿ÚÊÕµ½ÈÎÒâÊý¾Ýºó,¿ªÊ¼ÏòPC·¢ËÍÊý¾Ý
+  26   2                {
+  27   3                        // sendAll(TEXT0);         //·¢ËÍÊý¾Ý
+  28   3                        // sendAll(TEXT1);
+  29   3                        // sendAll(TEXT2);
+  30   3                        // sendAll(TEXT3);
+  31   3                         sendAll(table1);
+  32   3                         sendChar(table1[0]) ;
+  33   3      
+  34   3                         j=0;
+  35   3                              receFlag=0;                             //·¢ÍêÁËÇå±êÖ¾  
+  36   3                }
+  37   2              }
+  38   1      }
+  39          
+  40          void serInt() interrupt 4       //ÖÐ¶Ïº¯Êý
+  41          {
+  42   1              while(RI)                  //Èç¹ûÊÕµ½ÈÎÒâÊý¾Ý
+  43   1              {
+  44   2                      RI = 0;
+  45   2                      table1[j++]=SBUF;                                //´æÊý¾Ýµ½½ÓÊÕ»º´æ
+  46   2                      if(j==2)      
+  47   2                                      //Êý¾ÝµÄ±ä»¯ÈÃledµÆÖ±¹Û·´Ó¦³öÀ´
+  48   2                      receFlag=1;   //ÐÞ¸Ä½ÓÊÜ±êÖ¾,±ãÓÚÖ÷º¯Êý½øÈëwhileÖÐ·¢Êý¾Ý
+  49   2              }
+  50   1              
+  51   1              if(TI)
+  52   1              {
+  53   2                      TI = 0;                    //·¢ËÍÍêÒ»¸öÊý¾Ý
+  54   2                      sendFlag = 0;        //Çå±êÖ¾Î»
+  55   2              }
+C51 COMPILER V9.00   _Ð¶Ï2                                                                 07/06/2017 18:05:13 PAGE 2   
+
+  56   1      }
+  57          
+  58          
+  59          void sendChar(unsigned char Value)  //·¢ËÍÒ»¸ö×Ö½ÚÊý¾Ý
+  60          {
+  61   1               SBUF = Value;     
+  62   1               sendFlag = 1;       //ÉèÖÃ·¢ËÍ±êÖ¾Î»,·¢Ò»×Ö½Ú¾ÍÖÃÎ»
+  63   1               while(sendFlag);        //Ö±µ½·¢ÍêÊý¾Ý,½«sendFlagÇåÁãºó,²ÅÍË³ösendCharº¯Êý
+  64   1      }
+  65          
+  66          void sendAll(unsigned char *pValue)     //·¢ËÍÒ»×éÊý¾Ý
+  67          {
+  68   1              //while((*pValue) != '\0')   //Èç¹ûÃ»ÓÐ·¢ËÍÍê±Ï¾Í¼ÌÐø·¢
+  69   1              while(*(pValue+3))   //Èç¹ûÃ»ÓÐ·¢ËÍÍê±Ï¾Í¼ÌÐø·¢
+  70   1              {
+  71   2                      sendChar(*pValue);      //·¢ËÍ1×Ö½ÚÊý¾Ý
+  72   2                      pValue++;                         //Ö¸ÏòÏÂ1¸ö×Ö½Ú
+  73   2              }
+  74   1      }
+  75          
+  76          void initSer()          //³õÊ¼»¯
+  77          {
+  78   1          //×¢Òâ:¸ÕÉÏµçÊ±,SCONÊÇÎª0µÄ
+  79   1              TMOD=TMOD|0x20; //T1¶¨Ê±Æ÷Ä£Ê½,¹¤×÷·½Ê½2
+  80   1              TH1=0Xfd;                // 256-(11059200/(32*12*9600))
+  81   1              TL1=0xfd;
+  82   1              SM0=0;                   //ÊôÓÚSCON¼Ä´æÆ÷
+  83   1              SM1=1;                   //´®¿Ú¹¤×÷·½Ê½1,10Î»Òì²½,²¨ÌØÂÊ¿É¸Ä
+  84   1              REN=1;                   //ÔÊÐí´®¿Ú½ÓÊÕ
+  85   1              ES=1;                    //¿ª´®¿ÚÖÐ¶Ï
+  86   1          EA=1;                        //¿ª×ÜÖÐ¶Ï
+  87   1              TR1=1;           //Æô¶¯¶¨Ê±Æ÷
+  88   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    138    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      5    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

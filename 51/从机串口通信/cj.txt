@@ -1,0 +1,93 @@
+	#include <reg51.h>
+#define uchar unsigned char	      /*传送一次的字节数*/
+#define slave 0x00
+#define Bytenum 16		
+uchar idata tdata [16];
+uchar idata rdata [16];
+bit trdy;
+bit rrdy;
+void main(void)
+{	TMOD=0x20；			/*设置T1为定时器方式2*/
+	TL1=0xfa；			/*波特率4800*/
+TH1=0xfa;					
+PCON=0x00；
+TR1=1；
+SCON=0xf0；			/*方式3，允许接收，SM2=1*/
+ES=1;EA=1;			/*允许串口中断*/
+while(1){ trdy=1;rrdy=1;};		/*准备好发送和接收*/
+}
+void slave(void)  interrupt 4 using 1
+{	void str(void);
+	void sre(void);
+	uchar a;
+	RI=0;
+	ES=0;		
+if(SBUF!=slave){ES=1;goto reti;}	/*非本机地址，继续监听*/
+SM2=0;				/*取消监听状态*/
+	SBUF=slave；			/*发回从机地址*/
+while(TI!=1) ；TI=0；
+while(RI!=1) ；RI=0；
+if(RB8==1){ SM2=1; ES=1; goto reti;}/*确认地址不符，从机复位*/
+a=SBUF;
+if(a==0x01) { 			/*从机接收主机的数据*/
+if(rrdy==1) SBUF=0x01;		/*接收准备好，发回0x01*/
+	else
+SBUF=0x00;
+while(TI!=1) ；TI=0；
+while(RI!=1) ；RI=0；
+if(RB8==1){ SM2=1; ES=1; goto reti;}/*确认地址不符，从机复位*/
+sre( );	
+}
+	else
+{ 	if(a==0x02) 			/*从机向主机发送数据*/	
+{
+{	if(trdy==1) SBUF=0x02;	/*发送准备好*/
+else
+SBUF=0x00;
+while(TI!=1) ；TI=0；
+while(RI!=1) ；RI=0；
+if(RB8==1){ SM2=1; ES=1; goto reti;}	
+str( );					/*发送数据*/
+}
+	else 
+{ 	SBUF=0x80; 			/*命令非法*/
+while(TI!=1) ；TI=0；
+SM2=1;ES=1; 	
+}
+}
+reti:;
+}
+void str(void) 			/*发送数据函数*/
+{	uchar p,i;
+	trdy=0;
+do{	p=0;
+	for(i=0; i< Bytenum; i++);	
+	{ 	SBUF=tdata[i]; 		/*发送数据*/
+		p+=tdata[i];
+		while(TI!=1) ；TI=0；
+	}
+SBUF=p; 			/*发送校验和*/
+while(TI!=1) ；TI=0；
+while(RI!=1) ；RI=0；
+} while(SBUF !=0) ；		/*主机接收不正确，重新发送*/
+SM2=1; ES=1;
+
+}
+void sre(void)					/*接收数据函数*/
+{	uchar p,i;
+rrdy=0;
+	while(1) ；
+{	p=0;						/*初始化校验和为0*/
+	for(i=0; i< Bytenum; i++);	
+	{	while(RI!=1) ；RI=0；
+tdata[i]= SBUF；
+p+=rdata[i];
+}
+while(RI!=1) ；RI=0；
+if(SBUF!==p){ SBUF=0x00;break;}	/*校验和相同，发00H*/
+		else
+{	SBUF=0xff; while(TI!=1) ；TI=0；/*校验不同，发FFH，重新接收*/
+}
+}
+SM2=1; ES=1;	
+}
