@@ -1,4 +1,4 @@
-C51 COMPILER V9.00   从籣                                                                  07/07/2017 19:59:52 PAGE 1   
+C51 COMPILER V9.00   从籣                                                                  07/07/2017 19:39:36 PAGE 1   
 
 
 C51 COMPILER V9.00, COMPILATION OF MODULE 从籣
@@ -62,7 +62,7 @@ line level    source
   53   1          TMOD |= 0x20;               // TMOD: timer 1, mode 2, 8-bit 重装
   54   1          TH1   = 0xFD;               // TH1:  重装值 9600 波特率 晶振 11.0592MHz 
   55   1              TL1 = 0xFd; 
-C51 COMPILER V9.00   从籣                                                                  07/07/2017 19:59:52 PAGE 2   
+C51 COMPILER V9.00   从籣                                                                  07/07/2017 19:39:36 PAGE 2   
 
   56   1          TR1   = 1;                  // TR1:  timer 1 打开                         
   57   1          EA    = 1;                  //打开总中断
@@ -126,7 +126,7 @@ line level    source
  115   4      
  116   4      case 0xFE: K1=1;delay(k);dat=0xee;break;           //  第一路关
  117   4      case 0xFD: K2=1;delay(k);dat=0xee;break;           //  第二路关
-C51 COMPILER V9.00   从籣                                                                  07/07/2017 19:59:52 PAGE 3   
+C51 COMPILER V9.00   从籣                                                                  07/07/2017 19:39:36 PAGE 3   
 
  118   4      case 0xFC: K3=1;delay(k);dat=0xee;break;           //  第三路关
  119   4      case 0xFB: K4=1;delay(k);dat=0xee;break;           //  第四路关
@@ -190,7 +190,7 @@ line level    source
  177   2      
  178   2            //报头不满足或者一个协议帧发送完毕
  179   2            if(cnt==8||judge[0]!=0xFF)          
-C51 COMPILER V9.00   从籣                                                                  07/07/2017 19:59:52 PAGE 4   
+C51 COMPILER V9.00   从籣                                                                  07/07/2017 19:39:36 PAGE 4   
 
  180   2            cnt=0;
  181   2            //SBUF=Temp;     

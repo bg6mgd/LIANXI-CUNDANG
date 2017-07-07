@@ -1,4 +1,4 @@
-BL51 BANKED LINKER/LOCATER V6.22                                                        07/07/2017  19:59:52  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22                                                        07/07/2017  19:39:36  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
@@ -59,7 +59,7 @@ SEGMENT                          DATA_GROUP
   +--> ?PR?_SENDBYTE?从籣
   +--> ?PR?_DELAY?从籣
   +--> ?PR?_SENDSTR?从籣
-BL51 BANKED LINKER/LOCATER V6.22                                                      07/07/2017  19:59:52  PAGE 2
+BL51 BANKED LINKER/LOCATER V6.22                                                      07/07/2017  19:39:36  PAGE 2
 
 
 
@@ -119,7 +119,7 @@ SYMBOL TABLE OF MODULE:  从机 (从籣)
   B:00A0H.2       PUBLIC        K3
   -------         PROC          _DELAY
   D:0006H         SYMBOL        t
-BL51 BANKED LINKER/LOCATER V6.22                                                      07/07/2017  19:59:52  PAGE 3
+BL51 BANKED LINKER/LOCATER V6.22                                                      07/07/2017  19:39:36  PAGE 3
 
 
   C:02A2H         LINE#         32
@@ -179,7 +179,7 @@ SYMBOL TABLE OF MODULE:  从机 (从籣)
   C:0116H         LINE#         118
   C:011EH         LINE#         119
   C:0126H         LINE#         120
-BL51 BANKED LINKER/LOCATER V6.22                                                      07/07/2017  19:59:52  PAGE 4
+BL51 BANKED LINKER/LOCATER V6.22                                                      07/07/2017  19:39:36  PAGE 4
 
 
   C:012EH         LINE#         121

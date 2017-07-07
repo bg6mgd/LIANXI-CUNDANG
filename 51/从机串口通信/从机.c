@@ -32,6 +32,7 @@ sbit SB8=P1^7;
 void delay(int t)
 {
    while(t--);
+   while(t--);
 }
 
                      
@@ -68,23 +69,27 @@ void InitUART  (void)
 int judge[8];
 unsigned char ZTS[8]={0xff,0xfe,0x00,0x00,0x00,0x00,0xfd,0xfd};
 int cnt=0;
-int ZT;
+uchar ZTT,ZTW;
+uchar ZT;
 void main (void)
 {
-  	ZT=P1;
+  	
    //res=0;
    InitUART();
-
+	ZTT=0xff;
+	ZTW=0xdd;
    ES= 1;//打开串口中断
    
   while (1)                       
     {	
-	if(ZT!=P1)
-	    {
-		ZTS[2]=P1;
-		SendStr(ZTS);
+	
 		ZT=P1;
-		}
+		SendByte(ZTT);
+		SendByte(ZT);
+		SendByte(ZTW);
+		//SendStr(ZTS);
+		delay(1000);
+	
       
        if(judge[0]==0xFF&&judge[1]==0xFE&&judge[6]==0xFD&&judge[7]==0xFC)
 	   { 
@@ -173,9 +178,8 @@ void UART_SER (void) interrupt 4 //串行中断服务程序
       //报头不满足或者一个协议帧发送完毕
       if(cnt==8||judge[0]!=0xFF)	  
       cnt=0;
-      SBUF=Temp;     
+      //SBUF=Temp;     
 	  //TI=1;
 	 }
-   if(TI) 
-	TI=0;
+   
 } 
